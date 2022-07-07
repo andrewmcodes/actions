@@ -21,7 +21,59 @@ This is still a work in progress and things are likely to change. If you decide 
 
 ## Usage/Examples
 
-TODO
+```yml
+name: "Ruby on Rails CI"
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:11-alpine
+        ports:
+          - "5432:5432"
+        env:
+          POSTGRES_DB: rails_test
+          POSTGRES_USER: rails
+          POSTGRES_PASSWORD: password
+    env:
+      RAILS_ENV: test
+      DATABASE_URL: "postgres://rails:password@localhost:5432/rails_test"
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      # Add or replace dependency steps here
+      - name: Setup Ruby
+        uses: andrewmcodes/actions/setup-ruby@main
+      # Add or replace database setup steps here
+      - name: Set up database schema
+        run: bin/rails db:schema:load
+      # Add or replace test runners here
+      - name: Run tests
+        run: bin/rake
+
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Ruby
+        uses: andrewmcodes/actions/setup-ruby@main
+
+      - name: Bundler Audit
+        uses: andrewmcodes/actions/bundler-audit@main
+
+      - name: Brakeman
+        uses: andrewmcodes/actions/brakeman@main
+
+      - name: Standard
+        uses: andrewmcodes/actions/standard@main
+```
 
 ## Contributing
 
