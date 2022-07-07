@@ -1,0 +1,10 @@
+name: Brakeman
+
+description: Security audit application code
+
+runs:
+  using: "composite"
+  steps:
+    - name: Brakeman
+      run: bin/brakeman -q -w2
+      shell: bash

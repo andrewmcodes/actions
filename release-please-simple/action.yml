@@ -1,0 +1,10 @@
+name: "Release Please: Simple"
+
+description: Release using a version.txt file to store the version number
+
+runs:
+  using: "composite"
+  steps:
+    - uses: GoogleCloudPlatform/release-please-action@v3
+      with:
+        release-type: simple

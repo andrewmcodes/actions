@@ -1,0 +1,12 @@
+name: Setup Ruby
+
+description: Setup Ruby
+
+runs:
+  using: "composite"
+  steps:
+    - name: Setup Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+        # ruby-version: 2.6 # Not needed with a .ruby-version or .tool-versions file
