@@ -1,23 +1,31 @@
-# (WIP) [@andrewmcodes](https://twitter.com/andrewmcodes)/actions
+# [@andrewmcodes](https://twitter.com/andrewmcodes)/actions
 
-Shared GitHub Actions for all of my projects.
+Composite Actions and Shared Workflows for GitHub Actions
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/m/andrewmcodes/actions)
-
-## Actions
-
-- brakeman
-- bundler-audit
-- release-please-simple
-- setup-ruby
-- standard
 
 ## Installation
 
-**🚨 DANGER 🚨**
+As of now, this is only meant for my personal use, and is WIP, but usage instructions are below that will ensure if you do use this, it won't change out from under you.
 
-This is still a work in progress and things are likely to change. If you decide to use one of these actions, make sure to pin the action to a specific SHA to ensure it doesn't change out from under you as I experiment.
+> **Warning**
+> If you decide to use one of these actions, make sure to pin the action to a specific SHA or tag.
+
+To be totally safe, you can fork this repo and use your own fork as the source of the action while I continue to iterate on this.
+
+## Composite Actions
+
+- Setup
+  - `setup-node`
+  - `setup-ruby`
+- Linters
+  - `brakeman`
+  - `bundler-audit`
+  - `standard`
+- Release
+  - `release-please-simple`
 
 ## Usage/Examples
 
@@ -64,6 +72,9 @@ jobs:
 
       - name: Setup Ruby
         uses: andrewmcodes/actions/setup-ruby@main
+
+      - name: Setup Node
+        uses: andrewmcodes/actions/setup-node@main
 
       - name: Bundler Audit
         uses: andrewmcodes/actions/bundler-audit@main

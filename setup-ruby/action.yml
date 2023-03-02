@@ -1,12 +1,20 @@
 name: Setup Ruby
+description: Configure Ruby and bundle install
 
-description: Setup Ruby
+inputs:
+  checkout:
+    description: "Whether to check out the repository"
+    required: false
+    default: "false"
 
 runs:
   using: "composite"
   steps:
-    - name: Setup Ruby
+    - name: Checkout
+      if: ${{ inputs.checkout == 'true' }}
+      uses: actions/checkout@v3
+
+    - name: 💎 Setup Ruby
       uses: ruby/setup-ruby@v1
       with:
-        bundler-cache: true # runs 'bundle install' and caches installed gems automatically
-        # ruby-version: 2.6 # Not needed with a .ruby-version or .tool-versions file
+        bundler-cache: true
