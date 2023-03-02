@@ -1,10 +1,9 @@
 name: Standard
-
 description: Lint the codebase with standardrb
 
 runs:
   using: "composite"
   steps:
-    - name: Standard
-      run: bin/standardrb --format progress --parallel
+    - name: "[Lint] Standard"
+      run: bin/standardrb --format github --parallel
       shell: bash
