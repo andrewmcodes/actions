@@ -6,6 +6,9 @@ inputs:
     description: "Whether to check out the repository"
     required: false
     default: "false"
+  registry-url:
+    description: "URL of the registry to use"
+    required: false
 
 runs:
   using: "composite"
@@ -18,6 +21,7 @@ runs:
       uses: actions/setup-node@v3
       with:
         node-version: "16"
+        registry-url: ${{ inputs.registry-url }}
 
     - name: ⬢ Fetch dependencies from cache
       id: cache-yarn
