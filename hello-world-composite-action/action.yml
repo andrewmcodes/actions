@@ -19,5 +19,3 @@ runs:
       shell: bash
     - run: echo "${{ github.action_path }}" >> $GITHUB_STEP_SUMMARY
       shell: bash
-    - run: goodbye.sh
-      shell: bash
