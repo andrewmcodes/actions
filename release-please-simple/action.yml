@@ -1,10 +1,26 @@
 name: "Release Please: Simple"
 
-description: Release using a version.txt file to store the version number
+description: Run release-please with manifest config; consumers must commit release-please-config.json and .release-please-manifest.json
+
+inputs:
+  config-file:
+    description: Path to release-please config file
+    required: false
+    default: release-please-config.json
+  manifest-file:
+    description: Path to release-please manifest file
+    required: false
+    default: .release-please-manifest.json
+  token:
+    description: GitHub token used by release-please
+    required: false
+    default: ${{ github.token }}
 
 runs:
   using: "composite"
   steps:
-    - uses: GoogleCloudPlatform/release-please-action@v3
+    - uses: googleapis/release-please-action@v4
       with:
-        release-type: simple
+        config-file: ${{ inputs.config-file }}
+        manifest-file: ${{ inputs.manifest-file }}
+        token: ${{ inputs.token }}
